@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <label for="">Title</label> <br>
+        <input type="text" id="title">
+    </p>
+    
+    <p>
+        <label for="">Description</label> <br>
+        <textarea name="" id="description" cols="30" rows="10"></textarea>
+    </p>
+    
+    <button>Toevoegen</button>
+
+    <ul>
+        <li><strong>Title</strong> Description</li>
+        <li><strong>Title</strong> Description</li>
+    </ul>
+
+    <script>
+        var titleInput = document.querySelector("#title");
+        var descriptionInput = document.querySelector("#description");
+        var list = document.querySelector("ul");
+        var todos = [{
+            title: "Eerste Todo", 
+            description: "Gras Afrijden"
+        }];
+
+        var button = document.querySelector("button");
+        button.addEventListener("click", voegToe);
+        
+
+        function voegToe(){
+            var todo = {
+                title: titleInput.value,
+                description: descriptionInput.value
+            }
+            todos.push(todo);
+            render();
+            /*
+                var todo = {};
+                todo.title = "hey";
+                todo.description = "hoi";
+            */
+        }
+        function render(){
+            var html = "";
+            
+           for (var i = 0; i < todos.length; i++) {
+               var huidigeTodo = todos[i];
+               html += "<li><strong>" + huidigeTodo.title + "</strong> " + huidigeTodo.description + "</li>";
+               // html = html + "<li>" + huidigeTodo.title + "</li>";
+           }
+            list.innerHTML = html;
+        }
+        render();
+    </script>
+</body>
+</html>
